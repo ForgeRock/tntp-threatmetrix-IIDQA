@@ -1,103 +1,122 @@
-[![LNRS](https://risk.lexisnexis.com/Areas/LNRS/img/logo.png)](https://risk.lexisnexis.com/products/instantid-q-and-a)
-# LexisNexis Identity Proofing InstantID Question and Answer (IIDQA) Nodes
-LexisNexis InstantID® Question and Answer (IIDQA) helps support speedy consumer onboarding, prevent and detect identity theft, and fortify compliance via question-based authentication tools, effectively helping organizations protect their business.  The IIDQA nodes provide the capability for administrators to integrate Knowledge Based Authentication (KBA) into on-premise Access Management authentication trees, or a ForgeRock Identity Cloud journey. 
-
-LexisNexis IIDQA is primarily integrated into the following orchestration journeys:
-- Login Multi-Factor Authetnication (MFA) for medium to high risk transactions
-- New Account Origination to prevent synthetic accounts, as well as validating the account is linked to a physical person with high fidelity
+[![LNRS](https://risk.lexisnexis.com/Areas/LNRS/img/logo.png)](https://risk.lexisnexis.com/products/one-time-password)
+# LexisNexis Identity Proofing One-Time Passcode (OTP) Nodes
+---
+LexisNexis One Time Password is an out-of-band authentication method that provides business and government organizations the ability to have stronger authentication during a high risk, high value transaction with a customer. It offers a time-sensitive, unique random passcode via SMS text, email or phone and is ideal for companies that are interested in providing a multi-factor authentication solution for their customers. No hardware (electronic fob, etc.) other than the user's existing phone or personal computer is required. 
 
 ## Installation
-LexisNexis IIDQA Nodes are packaged as a jar file using the maven build toolset. To deploy the jar file for the nodes, perform the following:
-- Download the jar from the releases tab on github [here](https://github.com/ForgeRock/tntp-threatmetrix-IIDQA/releases/latest). 
+For the on-premise PingAM / ForgeRock, LexisNexis One-Time Passcode (OTP) Nodes are packaged as a jar file that is to be installed within the web server. To deploy the jar file, perform the following:
+- Download the jar from the releases tab on github [here](https://github.com/ForgeRock/lexisnexisrs-identity-proofing-docs/releases/latest). 
 - Stop the web container to deploy the jar file
-- Copy the jar into the `../web-container/webapps/openam/WEB-INF/lib` directory where AM is deployed
+- Copy the jar into the `../web-container/webapps/openam/WEB-INF/lib` directory where PingAM / ForgeRock is deployed
 - Restart the web container to pick up the new nodes
 - Once restart is complete, the nodes will then appear in the authentication trees components palette.
 
 ## Backwards Compatibility
-LexisNexis IIDQA Nodes have been tested to be backwards compatible with ForgeRock AM v7.3.0, as well as 
-available on the ForgeRock Identity Cloud. ForgeRock AM versions prior to version 7.3.0 are not supported due to changes in the ForgeRock core API.
+LexisNexis One-Time Passcode (OTP) Nodes have been tested with PingAM / ForgeRock v8.0, with backwards compatibility to v7.3, v7.4 and v7.5. Due to changes in the APIs, the LexisNexis OTP Nodes are not compatible with versions prior to v7.3. If support is needed for these versions, contact LexisNexis Risk Solutions.
 
 ## Quick Start Guide
-In order to get started with the LexisNexis IIDQA Nodes, we have prepared a Quick Start Guides:
-- Click [here](./docs/FGRK-LNRS-IIDQA-Nodes-Getting-Started-Guide-Cloud.pdf) to download a copy of the quick start guide for the ForgeRock Identity Cloud. 
-- Click [here](./docs/FGRK-LNRS-IIDQA-Nodes-Getting-Started-Guide-OpenAM.pdf) to download a copy of the quick start guide for the ForgeRock Access Manager.
+In order to get started with the LexisNexis One-Time Passcode (OTP) Nodes, we have prepared Quick Start Guides:
+- Click [here](./docs/LNRS-OTP-Nodes-Getting-Started-Guide-Cloud.pdf) to download a copy of the quick start guide for PingOne AIC / ForgeRock. 
+- Click [here](./docs/LNRS-OTP-Nodes-Getting-Started-Guide-OpenAM.pdf) to download a copy of the quick start guide for PingAM / ForgeRock.
 
 ## Release Notes
-To get the latest version of the LexisNexis IIDQA Nodes release notes, click [here](./docs/FGRK-LNRS-IIDQA-Nodes-Release-Notes.pdf) 
+To get the latest version of the LexisNexis One-Time Passcode (OTP) Nodes release notes, click [here](./docs/LNRS-OTP-Nodes-Release-Notes.pdf) 
 
 
 # Node Overview
-LexisNexis InstantID® Question and Answer (IIDQA) Nodes provide the following:
-- LexisNexis InstantID Get Quiz
-- LexisNexis InstantID Quiz Collector
-- LexisNexis InstantID Quiz Decision
+---
+LexisNexis One-Time Passcode (OTP) Nodes provide the following:
+- LexisNexis OTP Selector
+- LexisNexis OTP Sender
+- LexisNexis OTP Collector
+- LexisNexis OTP Decision
 
-## LexisNexis InstantID Get Quiz
-This node calls the LexisNexis Dynamic Decision Platform (DDP) Authentication Hub for InstantID Question and Answer (IIDQA). The main purpose of this node is to call the DDP Authentication Hub to generate an IIDQA quiz. There is no interface displayed to the user by this node.
+## LexisNexis OTP Selector
+This node will display a list of selections to the user for available methods to send an OTP code. LexisNexis OTP Nodes provide for email/OTP, SMS/OTP and voice/OTP. Upon user selection, the node will place the selected value into shared state variable <code>otp_type_select</code>. By default, this is the shared state variable that the LexisNexis OTP Send node accepts to determine which type of OTP to send to the end user. If only a single OTP type is configured, the node just sends the <code>otp_type_select</code> without any user interaction.
 
-The LexisNexis IIDQA Get Quiz node is configured with an attribute mapping to gather parameters for the API Request to send to the DDP Authentication Hub for generating a knowledge based answer quiz. The attribute mapping defines the syntax to query parameters within ForgeRock that are then mapped to IIDQA attributes.  Furthermore, the node provides the capability to gather the user attributes based on the configuration of the Attribute Source, mainly User Directory or Shared State. When the user directory is configured as the source for attributes, the node will assume that the username is contained in shared state from a previous node in the authentication tree/journey and use that username to query the user directory for user parameters and fulfill the attribute mapping.  When the shared state is configured as the source for attributes, the node will inspect shared state for the user parameters to fulfill the attribute mapping.
+The LexisNexis OTP Selector node has the following configuration parameters:
+* **Send Email** - When selected, this will display an Email Button on the selector interface.
+* **Send SMS** - When selected, this will display an SMS Button on the selector interface.
+* **Send Voice** - When selected, this will display an Voice Button on the selector interface.
 
-The LexisNexis IIDQA Get Quiz Node has the following configuration parameters:
+The LexisNexis OTP Selector node has the following outcomes:
+* **Success** - This outcome is triggered when a valid OTP Type is selected by the user.
+* **Error** - This outcome is triggered when there is a fundamental integration error, or a new bug is discovered. First attempt to fix the integration error by looking at debug log files for the node to determine if the integration error is due to configuration. If the configuration looks accurate, then open a support case with LexisNexis Risk Solutions.
+
+
+## LexisNexis OTP Sender
+This node will send an API request to the LexisNexis Dynamic Decision Platform (DDP) authentication hub to send an OTP code to the end user. The node will inspect shared state for <code>username</code> and <code>otp_type_select</code>.  This combination of information defines the type of OTP to send to the defined user. The configuration of the node will define how additional attributes for the API request are fulfilled.
+
+The LexisNexis OTP Sender Node has the following configuration parameters:
 * **Org ID** - Org ID is the unique id associated your organization on the Dynamic Decision Platform (DDP).
 * **API Key** - This is the unique API key generated via DDP Portal associated to the Org ID.
-* **API URL** - This is the URL for the DDP Authentication Hub IIDQA API endpoint. The default URL is the Worldwide endpoint. This should be modified for specific regions such as EU, US or India.
-* **Policy** - The DDP Portal policy to be used to integrate the DDP Authentication Hub with IIDQA
-* **Attribute Source** - This determines where the IIDQA Get Quiz node will inspect and gather user parameters to be mapped into the attributes of the IIDQA API Request to get a quiz. This can be configured for User Directory or form Shared State. User Directory is typically configured in a orchestration where IIDQA is used for Multi-Factor Authentication (MFA) since the information for the user should be in the directory. The Shared State specification is typically configured in an orchestration where IIDQA is used for identity proofing for use cases such as new account origination since the user account does not exist.  When Shared State is used there should be an interface in the tree/journey to collect the information which stores the data in shared state.
-* **Attribute List** - Defines a mapping of user parameters to InstantID Q&A API attributes. The user parameters will be fetched based on the Attribute Source. The Key is the user parameter name from the source and the value is the attribute name to send to InstantID Q&A. For example, Attribute Source=Shared State, with attribute list key=givenName and value=account_first_name would signal the LexisNexis IIDQA Get Quiz node to fetch the user parameter givenName from shared state and then set the IIDQA attribute account_first_name to the value from shared state. The attributes to send to IIDQA should include account_first_name, account_last_name, account_address_street1, account_address_city, account_address_state and account_address_zip as this will have a good probably to match a record in the LexisNexis system resulting in a generated quiz.
+* **Base URL** - Defines the domain URL for the DDP/TMX region where API Requests are to be sent.  The default value is the global region.
+* **Policy** - The DDP Portal policy to be used to integrate the DDP Authentication Hub with OTP.
+* **OTP Length** - Length of the OTP. Valid values are between 6 and 10 characters.
+* **OTP Expire** - Expiration time in minutes for the OTP. Valid values are between 1 and 60 minutes.
+* **Email Title** - When Email/OTP is triggered, this will be the title of the email sent to the user.
+* **Email Message** -When Email/OTP is triggered, this will be the message body of the email sent to the user.
+* **SMS Message** - When SMS/OTP is triggered, this will be the message body of the SMS text message sent to the user. The SMS message has a maximum length of 160 characters.
+* **Attribute Source** - Defines where the attributes for sending the OTP code is fetched at runtime. This is a dropdown list that contains the options User Directory and Shared State. User Directory will look for attribute in the Identity Store, and Shared State looks in the shared memory.
+* **Email Attribute** - When Email/OTP is defined by the OTP Type, the attribute defined in this configuration parameter will be fetched by the name of the attribute provided based on the Attribute Source defined.
+* **SMS Attribute** - When SMS/OTP is defined by the OTP Type, the attribute defined in this configuration parameter will be fetched by the name of the attribute provided based on the Attribute Source defined.
+* **Voice Attribute** - When Voice/OTP is defined by the OTP Type, the attribute defined in this configuration parameter will be fetched by the name of the attribute provided based on the Attribute Source defined.
 
-The LexisNexis IIDQA Get Quiz Node has the following outcomes:
-* **Success** - This outcome is triggered when the API Request results in a physical match to a person based on the Attribute List and a quiz is generated. The quiz is placed into Shared State for the IIDQA Quiz Collector Node, which will display the user interface for the quiz to collect the answers.
+The LexisNexis OTP Sender Node has the following outcomes:
+* **Success** - This outcome is triggered when the OTP code is successfully generated for the user. It is worth mention that generation does not guarantee delivery to the users device. Thus, the LexisNexis OTP Collector Node allows for retry in the event the user never receives the OTP code.
 * **API Error** - This outcome is triggered when there is an issue with the API Request such as a network timeout or the service is unavailable.
-* **Discovery Error** - This outcome is triggered when a physical match to a person cannot be made based on the attribute list provided in the IIDQA API Request. In this scenario, the journey/tree may display a secondary interface to collect additional user parameters such as DOB or SSN enabling a higher probability for an identity match.
-* **Velocity Error** - This outcome is triggered based on the IIDQA policy configured within LexisNexis. Typically, we configure the system to only allow 3 quiz requests over a 30 minutes period to prevent guessing attacks.
-* **Error** - This outcome is triggered when there is a fundamental integration error, or a new bug is discovered. First attempt to fix the integration error by looking at debug log files for the node to determine if the integration error is due to configuration. If the configuration looks accurate, then open a support case with LexisNexis.
+* **OTP Fail** - This outcome is triggered when the API Request is rejected by the LexisNexis DDP Authentication Hub service. Within the debug logging for the node, the actual error codes will be written for offline analysis and triage of the issue.
+* **Error** - This outcome is triggered when there is a fundamental integration error, or a new bug is discovered. First attempt to fix the integration error by looking at debug log files for the node to determine if the integration error is due to configuration. If the configuration looks accurate, then open a support case with LexisNexis Risk Solutions.
 
-## LexisNexis InstantID Quiz Collector
-This node displays the user interface for a quiz generated by the LexisNexis InstantID Get Quiz Node. The quiz questions are passed through shared state from the get quiz node to the quiz collector node. Once received, the interface will be displayed to the user for knowledge-based questions to be answered.  Once submitted, the answers are placed into shared memory for the LexisNexis InstantID Decision Node.
 
-The LexisNexis IIDQA Quiz Collector Node has the following configuration parameters:
-* **N/A** - There are no configuration parameters for this node.
+## LexisNexis OTP Collector
+This node collects the OTP code sent to the user. The interface allows for submitting a OTP code for decision and validation, as well as the user can request the OTP code to be resent.
 
-The LexisNexis IIDQA Quiz Collector Node has the following outcomes:
-* **Next** - This outcome is triggered quiz answers are complete and the submit button is selected by the user.
-* **Cancel** - This outcome is triggered when the user selects the cancel button to abort the quiz.
-* **Error** - This outcome is triggered when there is a fundamental integration error, or a new bug is discovered. First attempt to fix the integration error by looking at debug log files for the node to determine if the integration error is due to configuration. If the configuration looks accurate, then open a support case with LexisNexis.
+The LexisNexis OTP Collector Node has the following configuration parameters:
+* **Message Body** - This is the message displayed to the user on the collector interface.  The variable ${otpDestination} will contain either an email address or phone number depending on the method selected by the user via the Lexis OTP Sender.
+* **Help Text** - This is the help text displayed in the OTP text entry box for the user.
+* **OTP Error Message** - Message displayed if user enters an incorrect OTP code
+* **OTP Blank Message** - Message displayed if user attempts to submit a blank OTP code
 
-## LexisNexis InstantID Quiz Decision
-This node calls the LexisNexis Dynamic Decision Platform (DDP) Authentication Hub for InstantID Question and Answer (IIDQA). The main purpose of this node is to call the DDP Authentication Hub to validate answers for a quiz. There is no interface displayed to the user by this node. The quiz answers are passed through shared state from the quiz collector node to the quiz decision node. Once received, the DDP Authentication Hub IIDQA API Request is generated and API Response inspected for success or failure.
+The LexisNexis OTP Collector Node has the following outcomes:
+* **Submit** - This outcome is triggered when the user selects the "Submit" button. When selected, this should then link to the LexisNexis OTP Decision node to validate the OTP Code being submitted. If the LexisNexis OTP Decision node detects a blank or invalid OTP code, then this node will be linked and the appropriate message will be displayed. The outcomes review and challenge from the LexisNexis OTP Decision are to link back to the LexisNexis OTP Collector.
+* **Retry** - This outcome is triggered when the user wants to get a new OTP code by selecting the "Retry" button on the interface. This outcome should route back to the beginning of the OTP user workflow.
+* **Error** - This outcome is triggered when there is a fundamental integration error, or a new bug is discovered. First attempt to fix the integration error by looking at debug log files for the node to determine if the integration error is due to configuration. If the configuration looks accurate, then open a support case with LexisNexis Risk Solutions.
 
-The LexisNexis IIDQA Quiz Decision Node has the following configuration parameters:
+
+## LexisNexis OTP Decision
+This node verifies OTP codes entered by the user. In a typical authentication tree, the LexisNexis OTP Collector will precede this node.  The collector places the user entered and submitted OTP in shared state. Additionally, the LexisNexis OTP Sender will precede this node and the LexisNexis Collector Node that places the characteristics of the type of OTP into shared state.
+
+The LexisNexis OTP Decision Node has the following configuration parameters:
 * **Org ID** - Org ID is the unique id associated your organization on the Dynamic Decision Platform (DDP).
 * **API Key** - This is the unique API key generated via DDP Portal associated to the Org ID.
-* **API URL** - This is the URL for the DDP Authentication Hub IIDQA API endpoint. The default URL is the Worldwide endpoint. This should be modified for specific regions such as EU, US or India.
-* **Policy** - The DDP Portal policy to be used to integrate the DDP Authentication Hub with IIDQA. This policy configuration should be the same as the LexisNexis InstantID Get Quiz node configuration.
 
-The LexisNexis IIDQA Quiz Decision Node has the following outcomes:
-* **Pass** - This outcome is triggered when answers to a quiz are all passing according the DDP IIDQA policy
-* **Fail** - This outcome is triggered when answers to a quiz are not passing according the DDP IIDQA policy
-* **API Error** - This outcome is triggered when there is an issue with the API Request such as a network timeout or the service is unavailable.
-* **Error** - This outcome is triggered when there is a fundamental integration error, or a new bug is discovered. First attempt to fix the integration error by looking at debug log files for the node to determine if the integration error is due to configuration. If the configuration looks accurate, then open a support case with LexisNexis.
+The LexisNexis OTP Decision Node has the following outcomes:
+* **Pass** - This outcome is triggered when the OTP code submitted by the user is validated so that MFA via OTP has passed.
+* **Challenge** - This outcome is triggered when the OTP code fails to validate, and the number of retires has not been violated.
+* **Review** - This outcome is triggered when the OTP code fails to validate due to blank OTP code entered.
+* **Reject** - This outcome is triggered when OTP code validation is failed.
+* **Error** - This outcome is triggered when there is a fundamental integration error, or a new bug is discovered. First attempt to fix the integration error by looking at debug log files for the node to determine if the integration error is due to configuration. If the configuration looks accurate, then open a support case with LexisNexis Risk Solutions.
 
 
-# Configuring LexisNexis InstantID Question and Answer (IIDQA) Nodes
-## Example Journey/Tree - IIDQA Workflow
-The example depicts the general flow of IIDQA nodes. The workflow starts with the LexisNexis InstantID Get Quiz node, which does require input from previous nodes to be available in the shared state of the journey/tree. This node has been designed to support use cases for MFA of an existing managed user, as well as first time Identity Proofing for a new account origination. The key is how the LexisNexis IIDQA Get Quiz node gathers parameters from the ForgeRock environment, mainly from a user credential store to support MFA workflows, or from a user interface and shared state to support new account origination workflows. The configuration of the LexisNexis InstantID Get Quiz node will define the data source via the Attribute Source, which when set to User Directory will inspect shared state for "username" and when set to Shared State will inspect for all user parameters in shared state as defined in the Attribute List. The example depicted below is the core processing tree for InstantID Question and Answer, which is meant to be called from a ForgeRock Inner Tree from higher level journey/tree.
+# Configuring LexisNexis One-Time Passcode (OTP) Nodes
+---
+## Example Journey/Tree
+The example depicted here is showing how to configure LexisNexis OTP Nodes. LexisNexis OTP Nodes are used for Identity proofing as well as a multi-factor authentication (MFA) of a user. This example workflow displays the OTP Selector to the user, sends the OTP code, collects the OTP code value from the user and then validates if the value is correct.
 
-The flow is as follows:
-•	LexisNexis IIDQA Get Quiz Node. The configuration determines whether to pull user parameters from: (i) a user credential store, or (ii) from ForgeRock shared state in the journey/tree.
-•	LexisNexis IIDQA Quiz Collector Node. This node will display the quiz generated via the LexisNexis IIDQA Get Quiz Node. The user is expected to select the correct answers and click the submit button.
-•	LexisNexis IIDQA Quiz Decision Node to determine if the quiz answers collected from the user are valid and pass the test.
-•	Page Nodes with messages and a single OK button that will display the results and/or error conditions.
+The detailed workflow is as follows:
+- Page Node to display the OTP Method selection interface using the LexisNexis OTP Selector node. This configuration wraps the selector with page node so that detailed messages can be displays to the user as part of the interface. Success from the selector will place the variable <code>otp_type_select</code> into shared state.
+- LexisNexis OTP Sender node will generate the OTP code to the end user. This node will inspect shared state for <code>username</code> and <code>otp_type_select</code>.  This combination of information defines the type of OTP to send to the defined user. The configuration of the node will define how additional attributes for the API request are fulfilled. For example, if the OTP type is email, then the Email Attribute will be fetched from either the User Directory or Shared state based on the configuration of the Attribute Source.
+- Page Node to display the OTP Collection interface using the LexisNexis OTP Collector Node. This configuration wraps the selector with page node so that detailed messages can be displays to the user as part of the interface.
+- LexisNexis OTP Decision Node to determine if the OTP collected from the user is valid.
+- Page Nodes with messages and a single OK button that will display the results and/or error conditions.
+ 
+![OTP_JOURNEY](./images/lnrs-otp-tree.png)
 
-![IIDQA_JOURNEY](./images/lnrs-iidqa-tree.png)
 
-## Example Journey/Tree - IIDQA as Identity Proofing
-InstantID Question and Answer (IIDQA) technology can be used for Identity Proofing within a New Account Origination (NAO) workflow. This is done to validate the digital account is tied to a physical user, where the physical user information is validated, cutting down on synthetic accounts. The example depicted below shows how an existing journey/tree controlling Platform Registration can be modified to include IIDQA for Identity Proofing. The key is the ForgeRock Inner Tree Evaluator node at the correct location in the journey/tree to call out to the IIDQA Workflow. For this use case, the IIDQA Workflow would be configured to fetch user parameters from Shared State, where the Platform Registration would have the user interface to gather the parameters and place those into Shared State.
+## Example Journey/Tree
+One-Time Passcode (OTP) technology is typically used to augment an orchestration for Identity Proofing or user MFA.  The example journey/tree above provides an example of the OTP workflow, which is an orchestrated workflow. 
 
-![IIDQA_IDENTITY_PROOFING](./images/lnrs-iidqa-id-proof-tree.png)
-
-## Example Journey/Tree - IIDQA as Second Factor / MFA
-InstantID Question and Answer (IIDQA) technology can be used as a second factor (e.g. MFA) for many workflows and journeys. One common scenario is a User Login when a second factor for a high-risk transaction is needed.  In this case, the user is known due to the first factor authentication, as well as it is assumed that user has enough information within the user credential store to perform an IIDQA transaction. The key is the ForgeRock Inner Tree Evaluator node at the correct location in the journey/tree to call out to the IIDQA Workflow. For this use case, the IIDQA Workflow would be configured to fetch user parameters from the User Directory. The username is required to be in shared state which will be used to query the user directory for all user parameters as defined in the Attribute List.
-
-![IIDQA_MFA](./images/lnrs-iidqa-mfa-tree.png)
+A simple framework to exercise the authentication tree is to configure a page node with a username collector which will fulfill the dependency to have the attribute “username” being in shared state. Then an Inner Tree Evaluator Node can integrate the OTP journey/tree for a final outcome of authentication.
+ 
+![AUTH_OTP_JOURNEY](./images/lnrs-auth-otp-tree.png)
