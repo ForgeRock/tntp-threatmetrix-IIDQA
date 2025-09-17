@@ -1,7 +1,7 @@
 {
   "meta": {
-    "origin": "https://openam-tntp-lnupg-test.forgeblocks.com/platform/?realm=alpha#/journeys",
-    "exportedBy": "Eric.Uythoven@lexisnexisrisk.com",
+    "origin": "",
+    "exportedBy": "",
     "exportDate": "2025-09-16T16:39:00.542Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
@@ -169,7 +169,7 @@
         "6ceaff0a-e18e-40a5-85b4-78283d912314": {
           "_id": "6ceaff0a-e18e-40a5-85b4-78283d912314",
           "_rev": "-827512634",
-          "orgId": "26hote5e",
+          "orgId": "xxxxxx",
           "attributeSource": "SHAREDSTATE",
           "attributeMap": {
             "account_last_name": "sn",
@@ -348,7 +348,7 @@
         "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177": {
           "_id": "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177",
           "_rev": "-1220844646",
-          "orgId": "26hote5e",
+          "orgId": "xxxxxx",
           "baseUrl": "https://h-api.online-metrix.net/",
           "policy": "IIDQA",
           "apiKey": null,
