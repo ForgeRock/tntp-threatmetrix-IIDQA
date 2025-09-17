@@ -1,0 +1,450 @@
+{
+  "meta": {
+    "origin": "",
+    "exportedBy": "",
+    "exportDate": "2025-09-16T16:39:00.542Z",
+    "exportTool": "platform-admin ui tree export",
+    "exportToolVersion": "1.0",
+    "treesSelectedForExport": [
+      "Registration-LNRS-IIDQA"
+    ],
+    "innerTreesIncluded": []
+  },
+  "trees": {
+    "Registration-LNRS-IIDQA": {
+      "tree": {
+        "_id": "Registration-LNRS-IIDQA",
+        "_rev": "-80664240",
+        "identityResource": "managed/alpha_user",
+        "entryNodeId": "290be9c6-e906-4799-9068-9f5068c29ac1",
+        "innerTreeOnly": false,
+        "description": "Registration workflow example using LexisNexis Risk Solutions InstantID Question and Answer (IIDQA) as the identity Proofing.",
+        "noSession": false,
+        "mustRun": false,
+        "enabled": true,
+        "uiConfig": {
+          "categories": "[\"Authentication\",\"Registration\"]"
+        },
+        "nodes": {
+          "290be9c6-e906-4799-9068-9f5068c29ac1": {
+            "x": 174,
+            "y": 140.76666259765625,
+            "connections": {
+              "outcome": "6ceaff0a-e18e-40a5-85b4-78283d912314"
+            },
+            "nodeType": "PageNode",
+            "displayName": "Register User"
+          },
+          "6ceaff0a-e18e-40a5-85b4-78283d912314": {
+            "x": 461,
+            "y": 299.76666259765625,
+            "connections": {
+              "API_ERROR": "5ff21960-5ab2-4101-ab83-6ef28a27b655",
+              "DISCOVERY_ERROR": "df240ff3-5602-436f-b4f5-9b37077bd44b",
+              "VELOCITY_ERROR": "df240ff3-5602-436f-b4f5-9b37077bd44b",
+              "ERROR": "f69433a7-2879-4ed5-ad83-d0119c6d32a7",
+              "SUCCESS": "1a031ea3-a810-43bd-86a9-661c33943811"
+            },
+            "nodeType": "LnrsIidqaGetQuizNode",
+            "displayName": "GET QUIZ"
+          },
+          "1a031ea3-a810-43bd-86a9-661c33943811": {
+            "x": 743.6000061035156,
+            "y": 137.96667176485062,
+            "connections": {
+              "NEXT": "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177",
+              "CANCEL": "df240ff3-5602-436f-b4f5-9b37077bd44b",
+              "ERROR": "f69433a7-2879-4ed5-ad83-d0119c6d32a7"
+            },
+            "nodeType": "LnrsIidqaQuizCollectorNode",
+            "displayName": "QUIZ COLLECTOR"
+          },
+          "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5": {
+            "x": 1394.3999938964844,
+            "y": 44.16667175292969,
+            "connections": {
+              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+              "false": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+            },
+            "nodeType": "MessageNode",
+            "displayName": "IIDQA PASS"
+          },
+          "df240ff3-5602-436f-b4f5-9b37077bd44b": {
+            "x": 1396.3999938964844,
+            "y": 181.1666717529297,
+            "connections": {
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "MessageNode",
+            "displayName": "IIDQA FAIL"
+          },
+          "f69433a7-2879-4ed5-ad83-d0119c6d32a7": {
+            "x": 1398.3999938964844,
+            "y": 445.1666717529297,
+            "connections": {
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "MessageNode",
+            "displayName": "INTEGRATION ERROR"
+          },
+          "5ff21960-5ab2-4101-ab83-6ef28a27b655": {
+            "x": 1396.3999938964844,
+            "y": 316.1666717529297,
+            "connections": {
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "MessageNode",
+            "displayName": "IIDQA API FAIL"
+          },
+          "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177": {
+            "x": 1043.3999938964844,
+            "y": 10.166671752929688,
+            "connections": {
+              "PASS": "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5",
+              "FAIL": "df240ff3-5602-436f-b4f5-9b37077bd44b",
+              "API_ERROR": "5ff21960-5ab2-4101-ab83-6ef28a27b655",
+              "ERROR": "f69433a7-2879-4ed5-ad83-d0119c6d32a7"
+            },
+            "nodeType": "LnrsIidqaQuizDecisionNode",
+            "displayName": "QUIZ DECISION"
+          }
+        },
+        "staticNodes": {
+          "startNode": {
+            "x": 50,
+            "y": 250
+          },
+          "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
+            "x": 1672,
+            "y": 110
+          },
+          "e301438c-0bd0-429c-ab0c-66126501069a": {
+            "x": 1696,
+            "y": 288
+          }
+        }
+      },
+      "nodes": {
+        "290be9c6-e906-4799-9068-9f5068c29ac1": {
+          "_id": "290be9c6-e906-4799-9068-9f5068c29ac1",
+          "_rev": "394134893",
+          "nodes": [
+            {
+              "_id": "78ebeea6-d1d4-447e-9497-38fb4e1b6095",
+              "nodeType": "ValidatedUsernameNode",
+              "displayName": "Platform Username"
+            },
+            {
+              "_id": "fd74d9ae-665b-4459-8d76-b87a1479508f",
+              "nodeType": "ValidatedPasswordNode",
+              "displayName": "Platform Password"
+            },
+            {
+              "_id": "a28b07b5-be03-43c2-b14a-7108d57b9b9f",
+              "nodeType": "AttributeCollectorNode",
+              "displayName": "Attribute Collector"
+            }
+          ],
+          "pageDescription": {
+            "en": "Please enter the following information in order to create an account"
+          },
+          "stage": "{\"submitButtonText\":{\"en\":\"Create User Account\"}}",
+          "pageHeader": {
+            "en": "Account Registration"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "6ceaff0a-e18e-40a5-85b4-78283d912314": {
+          "_id": "6ceaff0a-e18e-40a5-85b4-78283d912314",
+          "_rev": "-827512634",
+          "orgId": "xxxxxx",
+          "attributeSource": "SHAREDSTATE",
+          "attributeMap": {
+            "account_last_name": "sn",
+            "account_first_name": "givenName",
+            "account_address_street1": "postalAddress",
+            "account_address_city": "city",
+            "account_address_state": "stateProvince",
+            "account_address_zip": "postalCode"
+          },
+          "baseUrl": "https://h-api.online-metrix.net/",
+          "policy": "IIDQA",
+          "apiKey": null,
+          "_type": {
+            "_id": "LnrsIidqaGetQuizNode",
+            "name": "LexisNexis InstantID Get Quiz Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "SUCCESS",
+              "displayName": "Success"
+            },
+            {
+              "id": "API_ERROR",
+              "displayName": "API Error"
+            },
+            {
+              "id": "DISCOVERY_ERROR",
+              "displayName": "Discovery Error"
+            },
+            {
+              "id": "VELOCITY_ERROR",
+              "displayName": "Velocity Error"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "1a031ea3-a810-43bd-86a9-661c33943811": {
+          "_id": "1a031ea3-a810-43bd-86a9-661c33943811",
+          "_rev": "563387354",
+          "_type": {
+            "_id": "LnrsIidqaQuizCollectorNode",
+            "name": "LexisNexis InstantID Quiz Collector Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "NEXT",
+              "displayName": "Next"
+            },
+            {
+              "id": "CANCEL",
+              "displayName": "Cancel"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5": {
+          "_id": "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5",
+          "_rev": "595785259",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "IIDQA Pass"
+          },
+          "messageNo": {
+            "en": "OK"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "df240ff3-5602-436f-b4f5-9b37077bd44b": {
+          "_id": "df240ff3-5602-436f-b4f5-9b37077bd44b",
+          "_rev": "-1246918239",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "Sorry, you did not pass the quiz."
+          },
+          "messageNo": {
+            "en": "OK"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "f69433a7-2879-4ed5-ad83-d0119c6d32a7": {
+          "_id": "f69433a7-2879-4ed5-ad83-d0119c6d32a7",
+          "_rev": "1667404608",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "There was an integration error, contact your system support."
+          },
+          "messageNo": {
+            "en": "OK"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "5ff21960-5ab2-4101-ab83-6ef28a27b655": {
+          "_id": "5ff21960-5ab2-4101-ab83-6ef28a27b655",
+          "_rev": "-165874067",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "There was an issue with LNRS API"
+          },
+          "messageNo": {
+            "en": "OK"
+          },
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177": {
+          "_id": "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177",
+          "_rev": "-1220844646",
+          "orgId": "xxxxxx",
+          "baseUrl": "https://h-api.online-metrix.net/",
+          "policy": "IIDQA",
+          "apiKey": null,
+          "_type": {
+            "_id": "LnrsIidqaQuizDecisionNode",
+            "name": "LexisNexis InstantID Quiz Decision Node",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "PASS",
+              "displayName": "Pass"
+            },
+            {
+              "id": "FAIL",
+              "displayName": "Fail"
+            },
+            {
+              "id": "API_ERROR",
+              "displayName": "API Error"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
+            }
+          ]
+        }
+      },
+      "innerNodes": {
+        "78ebeea6-d1d4-447e-9497-38fb4e1b6095": {
+          "_id": "78ebeea6-d1d4-447e-9497-38fb4e1b6095",
+          "_rev": "1452810530",
+          "usernameAttribute": "userName",
+          "validateInput": false,
+          "_type": {
+            "_id": "ValidatedUsernameNode",
+            "name": "Platform Username",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "fd74d9ae-665b-4459-8d76-b87a1479508f": {
+          "_id": "fd74d9ae-665b-4459-8d76-b87a1479508f",
+          "_rev": "294387326",
+          "validateInput": true,
+          "passwordAttribute": "password",
+          "_type": {
+            "_id": "ValidatedPasswordNode",
+            "name": "Platform Password",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        },
+        "a28b07b5-be03-43c2-b14a-7108d57b9b9f": {
+          "_id": "a28b07b5-be03-43c2-b14a-7108d57b9b9f",
+          "_rev": "882048755",
+          "attributesToCollect": [
+            "givenName",
+            "sn",
+            "postalAddress",
+            "city",
+            "stateProvince",
+            "postalCode"
+          ],
+          "identityAttribute": "userName",
+          "validateInputs": false,
+          "required": false,
+          "_type": {
+            "_id": "AttributeCollectorNode",
+            "name": "Attribute Collector",
+            "collection": true
+          },
+          "_outcomes": [
+            {
+              "id": "outcome",
+              "displayName": "Outcome"
+            }
+          ]
+        }
+      },
+      "scripts": {},
+      "emailTemplates": {},
+      "socialIdentityProviders": {},
+      "themes": [],
+      "saml2Entities": {},
+      "circlesOfTrust": {}
+    }
+  }
+}
