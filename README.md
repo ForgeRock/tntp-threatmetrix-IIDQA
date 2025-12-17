@@ -74,6 +74,7 @@ The LexisNexis IIDQA Quiz Decision Node has the following configuration paramete
 
 The LexisNexis IIDQA Quiz Decision Node has the following outcomes:
 * **Pass** - This outcome is triggered when answers to a quiz are all passing according the DDP IIDQA policy
+* **Challenge** – This outcome is triggered when an answer in the quiz is not correct, and the IIDQA policy allows for retesting with additional questions. In this case, the challenge outcome can be routed back to an IIDQA Quiz Collector. The IIQDA Decision Node will insert the additional retest quiz into Shared State for the IIDQA Quiz Collector Node, which will display the user interface for the quiz to collect the answers.
 * **Fail** - This outcome is triggered when answers to a quiz are not passing according the DDP IIDQA policy
 * **API Error** - This outcome is triggered when there is an issue with the API Request such as a network timeout or the service is unavailable.
 * **Error** - This outcome is triggered when there is a fundamental integration error, or a new bug is discovered. First attempt to fix the integration error by looking at debug log files for the node to determine if the integration error is due to configuration. If the configuration looks accurate, then open a support case with LexisNexis Risk Solutions.
