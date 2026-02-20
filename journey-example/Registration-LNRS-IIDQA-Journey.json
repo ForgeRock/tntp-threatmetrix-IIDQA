@@ -1,8 +1,8 @@
 {
   "meta": {
-    "origin": "",
-    "exportedBy": "",
-    "exportDate": "2025-09-16T16:39:00.542Z",
+    "origin": "https://openam-tntp-lnupg1.forgeblocks.com/platform/?realm=alpha#/journeys",
+    "exportedBy": "admin@lexisnexisrisk.com",
+    "exportDate": "2026-02-20T00:50:39.132Z",
     "exportTool": "platform-admin ui tree export",
     "exportToolVersion": "1.0",
     "treesSelectedForExport": [
@@ -14,7 +14,7 @@
     "Registration-LNRS-IIDQA": {
       "tree": {
         "_id": "Registration-LNRS-IIDQA",
-        "_rev": "-80664240",
+        "_rev": "-503880891",
         "identityResource": "managed/alpha_user",
         "entryNodeId": "290be9c6-e906-4799-9068-9f5068c29ac1",
         "innerTreeOnly": false,
@@ -22,93 +22,124 @@
         "noSession": false,
         "mustRun": false,
         "enabled": true,
+        "transactionalOnly": false,
         "uiConfig": {
           "categories": "[\"Authentication\",\"Registration\"]"
         },
         "nodes": {
-          "290be9c6-e906-4799-9068-9f5068c29ac1": {
-            "x": 174,
-            "y": 140.76666259765625,
+          "085fabb5-1b01-4d89-bcc7-0254c94cf98b": {
+            "x": 1397,
+            "y": 649.7666625976562,
             "connections": {
-              "outcome": "6ceaff0a-e18e-40a5-85b4-78283d912314"
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
             },
             "nodeType": "PageNode",
-            "displayName": "Register User"
+            "displayName": "INTEG ERROR"
           },
-          "6ceaff0a-e18e-40a5-85b4-78283d912314": {
-            "x": 461,
-            "y": 299.76666259765625,
+          "08cccb47-fa5d-4015-af59-fe6fcebe543c": {
+            "x": 1397,
+            "y": 431.76666259765625,
             "connections": {
-              "API_ERROR": "5ff21960-5ab2-4101-ab83-6ef28a27b655",
-              "DISCOVERY_ERROR": "df240ff3-5602-436f-b4f5-9b37077bd44b",
-              "VELOCITY_ERROR": "df240ff3-5602-436f-b4f5-9b37077bd44b",
-              "ERROR": "f69433a7-2879-4ed5-ad83-d0119c6d32a7",
-              "SUCCESS": "1a031ea3-a810-43bd-86a9-661c33943811"
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
             },
-            "nodeType": "LnrsIidqaGetQuizNode",
-            "displayName": "GET QUIZ"
+            "nodeType": "PageNode",
+            "displayName": "IIDQA API FAIL"
           },
           "1a031ea3-a810-43bd-86a9-661c33943811": {
             "x": 743.6000061035156,
             "y": 137.96667176485062,
             "connections": {
+              "CANCEL": "c839de20-c41a-4acf-ab27-5676350dfa4b",
               "NEXT": "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177",
-              "CANCEL": "df240ff3-5602-436f-b4f5-9b37077bd44b",
-              "ERROR": "f69433a7-2879-4ed5-ad83-d0119c6d32a7"
+              "ERROR": "085fabb5-1b01-4d89-bcc7-0254c94cf98b"
             },
             "nodeType": "LnrsIidqaQuizCollectorNode",
             "displayName": "QUIZ COLLECTOR"
           },
-          "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5": {
-            "x": 1394.3999938964844,
-            "y": 44.16667175292969,
+          "230df48e-402a-4822-a9dc-ee89905938e5": {
+            "x": 1639,
+            "y": 118.76666259765625,
             "connections": {
-              "true": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
-              "false": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0"
+              "CREATED": "70e691a5-1e33-4ac3-a356-e7b6d60d92e0",
+              "FAILURE": "43bc88b8-30b7-4733-8269-870673bb8db2"
             },
-            "nodeType": "MessageNode",
-            "displayName": "IIDQA PASS"
+            "nodeType": "CreateObjectNode",
+            "displayName": "Create Object"
           },
-          "df240ff3-5602-436f-b4f5-9b37077bd44b": {
-            "x": 1396.3999938964844,
-            "y": 181.1666717529297,
+          "290be9c6-e906-4799-9068-9f5068c29ac1": {
+            "x": 149,
+            "y": 107.76666259765625,
             "connections": {
-              "true": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "false": "e301438c-0bd0-429c-ab0c-66126501069a"
+              "outcome": "ddebbb43-224a-4c04-91ce-7ccccdfe30b1"
             },
-            "nodeType": "MessageNode",
-            "displayName": "IIDQA FAIL"
+            "nodeType": "PageNode",
+            "displayName": "Register User"
           },
-          "f69433a7-2879-4ed5-ad83-d0119c6d32a7": {
-            "x": 1398.3999938964844,
-            "y": 445.1666717529297,
+          "43bc88b8-30b7-4733-8269-870673bb8db2": {
+            "x": 1774,
+            "y": 251.76666259765625,
             "connections": {
-              "true": "e301438c-0bd0-429c-ab0c-66126501069a",
-              "false": "e301438c-0bd0-429c-ab0c-66126501069a"
-            },
-            "nodeType": "MessageNode",
-            "displayName": "INTEGRATION ERROR"
-          },
-          "5ff21960-5ab2-4101-ab83-6ef28a27b655": {
-            "x": 1396.3999938964844,
-            "y": 316.1666717529297,
-            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
               "true": "e301438c-0bd0-429c-ab0c-66126501069a"
             },
-            "nodeType": "MessageNode",
-            "displayName": "IIDQA API FAIL"
+            "nodeType": "PageNode",
+            "displayName": "Acct Create Fail"
+          },
+          "6ceaff0a-e18e-40a5-85b4-78283d912314": {
+            "x": 431,
+            "y": 283.76666259765625,
+            "connections": {
+              "API_ERROR": "08cccb47-fa5d-4015-af59-fe6fcebe543c",
+              "DISCOVERY_ERROR": "c839de20-c41a-4acf-ab27-5676350dfa4b",
+              "ERROR": "085fabb5-1b01-4d89-bcc7-0254c94cf98b",
+              "SUCCESS": "1a031ea3-a810-43bd-86a9-661c33943811",
+              "VELOCITY_ERROR": "c839de20-c41a-4acf-ab27-5676350dfa4b"
+            },
+            "nodeType": "LnrsIidqaGetQuizNode",
+            "displayName": "GET QUIZ"
+          },
+          "8873980d-6e1e-4527-ad50-22d031c612ad": {
+            "x": 1396,
+            "y": 6.76666259765625,
+            "connections": {
+              "true": "230df48e-402a-4822-a9dc-ee89905938e5"
+            },
+            "nodeType": "PageNode",
+            "displayName": "IIDQA PASS"
           },
           "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177": {
-            "x": 1043.3999938964844,
-            "y": 10.166671752929688,
+            "x": 1067.3999938964844,
+            "y": 13.166671752929688,
             "connections": {
-              "PASS": "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5",
-              "FAIL": "df240ff3-5602-436f-b4f5-9b37077bd44b",
-              "API_ERROR": "5ff21960-5ab2-4101-ab83-6ef28a27b655",
-              "ERROR": "f69433a7-2879-4ed5-ad83-d0119c6d32a7"
+              "API_ERROR": "08cccb47-fa5d-4015-af59-fe6fcebe543c",
+              "CHALLENGE": "1a031ea3-a810-43bd-86a9-661c33943811",
+              "ERROR": "085fabb5-1b01-4d89-bcc7-0254c94cf98b",
+              "FAIL": "c839de20-c41a-4acf-ab27-5676350dfa4b",
+              "PASS": "8873980d-6e1e-4527-ad50-22d031c612ad"
             },
             "nodeType": "LnrsIidqaQuizDecisionNode",
             "displayName": "QUIZ DECISION"
+          },
+          "c839de20-c41a-4acf-ab27-5676350dfa4b": {
+            "x": 1399,
+            "y": 216.76666259765625,
+            "connections": {
+              "false": "e301438c-0bd0-429c-ab0c-66126501069a",
+              "true": "e301438c-0bd0-429c-ab0c-66126501069a"
+            },
+            "nodeType": "PageNode",
+            "displayName": "IIDQA FAIL"
+          },
+          "ddebbb43-224a-4c04-91ce-7ccccdfe30b1": {
+            "x": 420,
+            "y": 167,
+            "connections": {
+              "true": "6ceaff0a-e18e-40a5-85b4-78283d912314"
+            },
+            "nodeType": "ScriptedDecisionNode",
+            "displayName": "Persist Password State"
           }
         },
         "staticNodes": {
@@ -117,19 +148,128 @@
             "y": 250
           },
           "70e691a5-1e33-4ac3-a356-e7b6d60d92e0": {
-            "x": 1672,
-            "y": 110
+            "x": 1954,
+            "y": 104
           },
           "e301438c-0bd0-429c-ab0c-66126501069a": {
-            "x": 1696,
-            "y": 288
+            "x": 1959,
+            "y": 501
           }
         }
       },
       "nodes": {
+        "085fabb5-1b01-4d89-bcc7-0254c94cf98b": {
+          "_id": "085fabb5-1b01-4d89-bcc7-0254c94cf98b",
+          "_rev": "-465330508",
+          "nodes": [
+            {
+              "_id": "f69433a7-2879-4ed5-ad83-d0119c6d32a7",
+              "nodeType": "MessageNode",
+              "displayName": "INTEG ERROR"
+            }
+          ],
+          "pageDescription": {},
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageHeader": {
+            "en": "Integration Error"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "08cccb47-fa5d-4015-af59-fe6fcebe543c": {
+          "_id": "08cccb47-fa5d-4015-af59-fe6fcebe543c",
+          "_rev": "-1235951689",
+          "nodes": [
+            {
+              "_id": "5ff21960-5ab2-4101-ab83-6ef28a27b655",
+              "nodeType": "MessageNode",
+              "displayName": "IIDQA API FAIL"
+            }
+          ],
+          "pageDescription": {},
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageHeader": {
+            "en": "Account Registration"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "1a031ea3-a810-43bd-86a9-661c33943811": {
+          "_id": "1a031ea3-a810-43bd-86a9-661c33943811",
+          "_rev": "732609843",
+          "_type": {
+            "_id": "LnrsIidqaQuizCollectorNode",
+            "name": "LexisNexis InstantID Quiz Collector Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "NEXT",
+              "displayName": "Next"
+            },
+            {
+              "id": "CANCEL",
+              "displayName": "Cancel"
+            },
+            {
+              "id": "ERROR",
+              "displayName": "Error"
+            }
+          ]
+        },
+        "230df48e-402a-4822-a9dc-ee89905938e5": {
+          "_id": "230df48e-402a-4822-a9dc-ee89905938e5",
+          "_rev": "-481275492",
+          "identityResource": "managed/alpha_user",
+          "_type": {
+            "_id": "CreateObjectNode",
+            "name": "Create Object",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "CREATED",
+              "displayName": "Created"
+            },
+            {
+              "id": "FAILURE",
+              "displayName": "Failed"
+            }
+          ]
+        },
         "290be9c6-e906-4799-9068-9f5068c29ac1": {
           "_id": "290be9c6-e906-4799-9068-9f5068c29ac1",
-          "_rev": "394134893",
+          "_rev": "577975994",
           "nodes": [
             {
               "_id": "78ebeea6-d1d4-447e-9497-38fb4e1b6095",
@@ -157,7 +297,8 @@
           "_type": {
             "_id": "PageNode",
             "name": "Page Node",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -166,18 +307,50 @@
             }
           ]
         },
+        "43bc88b8-30b7-4733-8269-870673bb8db2": {
+          "_id": "43bc88b8-30b7-4733-8269-870673bb8db2",
+          "_rev": "-1390315545",
+          "nodes": [
+            {
+              "_id": "2427a7c0-7ab0-4fef-bb40-4730880ff968",
+              "nodeType": "MessageNode",
+              "displayName": "ACCT Create Fail"
+            }
+          ],
+          "pageDescription": {},
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageHeader": {
+            "en": "Account Registration"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
         "6ceaff0a-e18e-40a5-85b4-78283d912314": {
           "_id": "6ceaff0a-e18e-40a5-85b4-78283d912314",
-          "_rev": "-827512634",
-          "orgId": "xxxxxx",
+          "_rev": "-641545697",
+          "orgId": "abcd1234",
           "attributeSource": "SHAREDSTATE",
           "attributeMap": {
-            "account_last_name": "sn",
-            "account_first_name": "givenName",
-            "account_address_street1": "postalAddress",
             "account_address_city": "city",
             "account_address_state": "stateProvince",
-            "account_address_zip": "postalCode"
+            "account_address_street1": "postalAddress",
+            "account_address_zip": "postalCode",
+            "account_first_name": "givenName",
+            "account_last_name": "sn"
           },
           "baseUrl": "https://h-api.online-metrix.net/",
           "policy": "IIDQA",
@@ -185,7 +358,8 @@
           "_type": {
             "_id": "LnrsIidqaGetQuizNode",
             "name": "LexisNexis InstantID Get Quiz Node",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -210,129 +384,26 @@
             }
           ]
         },
-        "1a031ea3-a810-43bd-86a9-661c33943811": {
-          "_id": "1a031ea3-a810-43bd-86a9-661c33943811",
-          "_rev": "563387354",
-          "_type": {
-            "_id": "LnrsIidqaQuizCollectorNode",
-            "name": "LexisNexis InstantID Quiz Collector Node",
-            "collection": true
-          },
-          "_outcomes": [
+        "8873980d-6e1e-4527-ad50-22d031c612ad": {
+          "_id": "8873980d-6e1e-4527-ad50-22d031c612ad",
+          "_rev": "-1447864606",
+          "nodes": [
             {
-              "id": "NEXT",
-              "displayName": "Next"
-            },
-            {
-              "id": "CANCEL",
-              "displayName": "Cancel"
-            },
-            {
-              "id": "ERROR",
-              "displayName": "Error"
+              "_id": "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5",
+              "nodeType": "MessageNode",
+              "displayName": "IIDQA PASS"
             }
-          ]
-        },
-        "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5": {
-          "_id": "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5",
-          "_rev": "595785259",
-          "messageYes": {
-            "en": "OK"
-          },
-          "message": {
-            "en": "IIDQA Pass"
-          },
-          "messageNo": {
-            "en": "OK"
+          ],
+          "pageDescription": {},
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageHeader": {
+            "en": "Account Registration"
           },
           "_type": {
-            "_id": "MessageNode",
-            "name": "Message Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "true",
-              "displayName": "True"
-            },
-            {
-              "id": "false",
-              "displayName": "False"
-            }
-          ]
-        },
-        "df240ff3-5602-436f-b4f5-9b37077bd44b": {
-          "_id": "df240ff3-5602-436f-b4f5-9b37077bd44b",
-          "_rev": "-1246918239",
-          "messageYes": {
-            "en": "OK"
-          },
-          "message": {
-            "en": "Sorry, you did not pass the quiz."
-          },
-          "messageNo": {
-            "en": "OK"
-          },
-          "_type": {
-            "_id": "MessageNode",
-            "name": "Message Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "true",
-              "displayName": "True"
-            },
-            {
-              "id": "false",
-              "displayName": "False"
-            }
-          ]
-        },
-        "f69433a7-2879-4ed5-ad83-d0119c6d32a7": {
-          "_id": "f69433a7-2879-4ed5-ad83-d0119c6d32a7",
-          "_rev": "1667404608",
-          "messageYes": {
-            "en": "OK"
-          },
-          "message": {
-            "en": "There was an integration error, contact your system support."
-          },
-          "messageNo": {
-            "en": "OK"
-          },
-          "_type": {
-            "_id": "MessageNode",
-            "name": "Message Node",
-            "collection": true
-          },
-          "_outcomes": [
-            {
-              "id": "true",
-              "displayName": "True"
-            },
-            {
-              "id": "false",
-              "displayName": "False"
-            }
-          ]
-        },
-        "5ff21960-5ab2-4101-ab83-6ef28a27b655": {
-          "_id": "5ff21960-5ab2-4101-ab83-6ef28a27b655",
-          "_rev": "-165874067",
-          "messageYes": {
-            "en": "OK"
-          },
-          "message": {
-            "en": "There was an issue with LNRS API"
-          },
-          "messageNo": {
-            "en": "OK"
-          },
-          "_type": {
-            "_id": "MessageNode",
-            "name": "Message Node",
-            "collection": true
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -347,20 +418,25 @@
         },
         "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177": {
           "_id": "8ac425cf-d8de-4a81-b86c-b2c9b6d0c177",
-          "_rev": "-1220844646",
-          "orgId": "xxxxxx",
+          "_rev": "-1969260201",
+          "orgId": "abcd1234",
+          "apiKey": null,
           "baseUrl": "https://h-api.online-metrix.net/",
           "policy": "IIDQA",
-          "apiKey": null,
           "_type": {
             "_id": "LnrsIidqaQuizDecisionNode",
             "name": "LexisNexis InstantID Quiz Decision Node",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
               "id": "PASS",
               "displayName": "Pass"
+            },
+            {
+              "id": "CHALLENGE",
+              "displayName": "Challenge"
             },
             {
               "id": "FAIL",
@@ -375,18 +451,131 @@
               "displayName": "Error"
             }
           ]
+        },
+        "c839de20-c41a-4acf-ab27-5676350dfa4b": {
+          "_id": "c839de20-c41a-4acf-ab27-5676350dfa4b",
+          "_rev": "-1832917000",
+          "nodes": [
+            {
+              "_id": "df240ff3-5602-436f-b4f5-9b37077bd44b",
+              "nodeType": "MessageNode",
+              "displayName": "IIDQA FAIL"
+            }
+          ],
+          "pageDescription": {},
+          "stage": "{\"pageFooter\":{\"en\":\"<style>\\nbutton[data-testid=\\\"btn-no\\\"] {\\n  display: none !important;\\n}\\n</style>\"}}",
+          "pageHeader": {
+            "en": "Account Registration"
+          },
+          "_type": {
+            "_id": "PageNode",
+            "name": "Page Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "ddebbb43-224a-4c04-91ce-7ccccdfe30b1": {
+          "_id": "ddebbb43-224a-4c04-91ce-7ccccdfe30b1",
+          "_rev": "-1474804049",
+          "script": "bedf79b8-6657-49cb-ac79-80d5050d6994",
+          "outcomes": [
+            "true"
+          ],
+          "outputs": [
+            "*"
+          ],
+          "inputs": [
+            "*"
+          ],
+          "_type": {
+            "_id": "ScriptedDecisionNode",
+            "name": "Scripted Decision",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "true"
+            }
+          ]
         }
       },
       "innerNodes": {
+        "f69433a7-2879-4ed5-ad83-d0119c6d32a7": {
+          "_id": "f69433a7-2879-4ed5-ad83-d0119c6d32a7",
+          "_rev": "2119546712",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "There was an integration error, contact your system support."
+          },
+          "messageNo": {},
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "5ff21960-5ab2-4101-ab83-6ef28a27b655": {
+          "_id": "5ff21960-5ab2-4101-ab83-6ef28a27b655",
+          "_rev": "286268037",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "There was an issue with LNRS API"
+          },
+          "messageNo": {},
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
         "78ebeea6-d1d4-447e-9497-38fb4e1b6095": {
           "_id": "78ebeea6-d1d4-447e-9497-38fb4e1b6095",
-          "_rev": "1452810530",
+          "_rev": "1705886383",
           "usernameAttribute": "userName",
           "validateInput": false,
           "_type": {
             "_id": "ValidatedUsernameNode",
             "name": "Platform Username",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -397,13 +586,14 @@
         },
         "fd74d9ae-665b-4459-8d76-b87a1479508f": {
           "_id": "fd74d9ae-665b-4459-8d76-b87a1479508f",
-          "_rev": "294387326",
-          "validateInput": true,
+          "_rev": "478224395",
           "passwordAttribute": "password",
+          "validateInput": true,
           "_type": {
             "_id": "ValidatedPasswordNode",
             "name": "Platform Password",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -414,7 +604,7 @@
         },
         "a28b07b5-be03-43c2-b14a-7108d57b9b9f": {
           "_id": "a28b07b5-be03-43c2-b14a-7108d57b9b9f",
-          "_rev": "882048755",
+          "_rev": "1133027456",
           "attributesToCollect": [
             "givenName",
             "sn",
@@ -429,7 +619,8 @@
           "_type": {
             "_id": "AttributeCollectorNode",
             "name": "Attribute Collector",
-            "collection": true
+            "collection": true,
+            "version": "1.0"
           },
           "_outcomes": [
             {
@@ -437,9 +628,105 @@
               "displayName": "Outcome"
             }
           ]
+        },
+        "2427a7c0-7ab0-4fef-bb40-4730880ff968": {
+          "_id": "2427a7c0-7ab0-4fef-bb40-4730880ff968",
+          "_rev": "-2146390075",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "Failed to create your user account. Please contact your system administrator."
+          },
+          "messageNo": {},
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5": {
+          "_id": "0eb5f9c1-e0e5-4f97-8144-062ea6c418e5",
+          "_rev": "1061480251",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "Congratulations, you passed the quiz, creating your account."
+          },
+          "messageNo": {},
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
+        },
+        "df240ff3-5602-436f-b4f5-9b37077bd44b": {
+          "_id": "df240ff3-5602-436f-b4f5-9b37077bd44b",
+          "_rev": "-794776135",
+          "messageYes": {
+            "en": "OK"
+          },
+          "message": {
+            "en": "Sorry, you did not pass the quiz."
+          },
+          "messageNo": {},
+          "_type": {
+            "_id": "MessageNode",
+            "name": "Message Node",
+            "collection": true,
+            "version": "1.0"
+          },
+          "_outcomes": [
+            {
+              "id": "true",
+              "displayName": "True"
+            },
+            {
+              "id": "false",
+              "displayName": "False"
+            }
+          ]
         }
       },
-      "scripts": {},
+      "scripts": {
+        "bedf79b8-6657-49cb-ac79-80d5050d6994": {
+          "_id": "bedf79b8-6657-49cb-ac79-80d5050d6994",
+          "name": "password-state",
+          "description": null,
+          "script": "\"/*\\n  - Data made available by nodes that have already executed are available in the sharedState variable.\\n  - The script should set outcome to either \\\"true\\\" or \\\"false\\\".\\n */\\n\\noutcome = \\\"true\\\";\\nnodeState.putShared(\\\"password\\\", nodeState.get(\\\"password\\\"));\\n\\nvar attributes = nodeState.get(\\\"objectAttributes\\\");\\nif (attributes) {\\n  attributes.put(\\\"password\\\", nodeState.get(\\\"password\\\"));\\n  nodeState.putShared(\\\"objectAttributes\\\", attributes);\\n}\\n    \\n\"",
+          "default": false,
+          "language": "JAVASCRIPT",
+          "context": "AUTHENTICATION_TREE_DECISION_NODE",
+          "createdBy": "id=b4e42b51-6759-4e51-8e0e-39b030eeba53,ou=user,ou=am-config",
+          "creationDate": 1771526539935,
+          "lastModifiedBy": "id=b4e42b51-6759-4e51-8e0e-39b030eeba53,ou=user,ou=am-config",
+          "lastModifiedDate": 1771531874579,
+          "evaluatorVersion": "1.0"
+        }
+      },
       "emailTemplates": {},
       "socialIdentityProviders": {},
       "themes": [],
